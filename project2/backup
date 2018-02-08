@@ -1,0 +1,266 @@
+//
+// Created by Shuheng Li on 1/29/18.
+//
+
+#include <cstdlib>
+#include <iostream>
+#include "Zoo.h"
+
+
+
+/*
+Zoo::Zoo(int tigerS, int penguinS, int turtleS):tigerSize(tigerS), penguinSize(penguinS), turtleSize(turtleS),
+        tigerCapacity(10), penguinCapacity(10), turtleCapacity(10) {
+
+    tigerArray = new Tiger[tigerCapacity];
+    penguinArray = new Penguin[penguinCapacity];
+    turtleArray = new Turtle[turtleCapacity];
+    int age = 1;
+    for(int i = 0; i < tigerSize; i++){
+        Tiger temp(age);
+        tigerArray[i] = temp;
+    }
+
+    for(int i = 0; i < penguinSize; i++){
+        Penguin temp(age);
+        penguinArray[i] = temp;
+    }
+
+    for(int i = 0; i < turtleSize; i++){
+        Turtle temp(age);
+        turtleArray[i] = temp;
+    }
+}
+
+void Zoo::randomEvent() {
+    bonus = 0;
+    int probability = 10;
+    int random = (std::rand() % probability);
+    switch(random){
+        case 0: sickness();
+            break;
+        case 1: boom();
+            break;
+        case 2: babyBorn();
+            break;
+        default:
+            break;
+    }
+}
+
+float Zoo::profit() {
+    return 0;
+}
+
+void Zoo::addAnimal(AnimalType animalType) {
+    int age = 3;
+    switch (animalType){
+        case TIGER: {
+            if(tigerSize >= tigerCapacity){
+                doubleArray(TIGER);
+            }
+            Tiger temp(age);
+            tigerArray[tigerSize++] = temp;
+            break;
+        }
+        case PENGUIN: {
+            if(penguinSize >= penguinCapacity){
+                doubleArray(PENGUIN);
+            }
+            Penguin temp(age);
+            penguinArray[penguinSize++] = temp;
+            break;
+        }
+        case TURTLE: {
+            if(turtleSize >= turtleCapacity){
+                doubleArray(TURTLE);
+            }
+            Turtle temp(age);
+            turtleArray[turtleSize++] = temp;
+            break;
+        }
+        default:
+            std::cerr << "wrong type for add function"<< std::endl;
+    }
+
+}
+
+void Zoo::sickness() {
+    AnimalType res = ANIMAL;
+    int range = 3;
+    int random = (std::rand() % range) + 1;
+    removeElemnt((res + random));
+
+}
+
+void Zoo::boom() {
+    float base = 250;
+    int probability = 11;
+    int random = (std::rand() % probability);
+    float multiple = float(random) / 10 + float(1);
+    bonus = base * multiple * tigerSize;
+}
+
+void Zoo::babyBorn() {
+
+}
+
+void Zoo::doubleArray(AnimalType animalType) {
+    switch (animalType){
+        case TIGER: {
+            tigerSize = tigerSize * 2;
+            Tiger* newArray = new Tiger[tigerSize];
+            for(int i = 0; i < tigerSize; i++){
+                newArray[i] = tigerArray[i];
+            }
+            delete[] tigerArray;
+            tigerArray = newArray;
+            break;
+        }
+        case PENGUIN: {
+            penguinSize = penguinSize * 2;
+            Penguin* newArray = new Penguin[penguinSize];
+            for(int i = 0; i < penguinSize; i++){
+                newArray[i] = penguinArray[i];
+            }
+            delete[] penguinArray;
+            penguinArray = newArray;
+            break;
+        }
+        case TURTLE: {
+            turtleSize = turtleSize * 2;
+            Turtle* newArray = new Turtle[turtleSize];
+            for(int i = 0; i < turtleSize; i++){
+                newArray[i] = turtleArray[i];
+            }
+            delete[] turtleArray;
+            turtleArray = newArray;
+            break;
+        }
+        default:
+            std::cerr << "wrong type for double function"<< std::endl;
+    }
+
+}
+
+void Zoo::removeElemnt(AnimalType animalType) {
+    switch (animalType){
+        case TIGER: {
+            int probability = tigerSize;
+            int random = (std::rand() % probability);
+            for(int i = random; i < tigerSize - 1; i++){
+                tigerArray[i] = tigerArray[i + 1];
+            }
+            tigerArray[tigerSize] = NULL;
+            tigerSize--;
+            break;
+            }
+        case PENGUIN: {
+            int probability = penguinSize;
+            int random = (std::rand() % probability);
+            for(int i = random; i < penguinSize - 1; i++){
+                penguinArray[i] = penguinArray[i + 1];
+            }
+            penguinArray[penguinSize] = NULL;
+            penguinSize--;
+            break;
+            }
+        case TURTLE: {
+            int probability = turtleSize;
+            int random = (std::rand() % probability);
+            for(int i = random; i < turtleSize- 1; i++){
+                turtleArray[i] = turtleArray[i + 1];
+            }
+            turtleArray[turtleSize] = NULL;
+            turtleSize--;
+            break;
+        }
+        default:
+            std::cerr << "wrong type for removeRandomElement function"<< std::endl;
+    }
+
+}
+
+bool Zoo::hasAdult(AnimalType animalType) {
+    switch (animalType){
+        case TIGER: {
+            for(int i = 0; i < tigerSize; i++){
+                if(tigerArray[i].getAge() >= 3) return true;
+            }
+            break;
+        }
+        case PENGUIN: {
+            for(int i = 0; i < penguinSize; i++){
+                if(penguinArray[i].getAge() >= 3) return true;
+            }
+            break;
+        }
+        case TURTLE: {
+            for(int i = 0; i < turtleSize; i++){
+                if(turtleArray[i].getAge() >= 3) return true;
+            }
+            break;
+        }
+        default:
+            std::cerr << "wrong type for hasAdult function"<< std::endl;
+    }
+    return false;
+}
+*/
+Zoo::Zoo(int tigerSize, int penguinSize, int turtleSize) {
+    tigerArray =AnimalArray(TIGER, 0, 10);
+    penguinArray = AnimalArray(PENGUIN, 0, 10);
+    turtleArray = AnimalArray(TURTLE, 0, 10);
+    int age = 1;
+    for(int i = 0; i < tigerSize; i++){
+        Tiger temp(age);
+        tigerArray.add(temp);
+    }
+
+    for(int i = 0; i < penguinSize; i++){
+        Penguin temp(age);
+        penguinArray.add(temp);
+    }
+
+    for(int i = 0; i < turtleSize; i++){
+        Turtle temp(age);
+        turtleArray.add(temp);
+    }
+}
+
+void Zoo::sickness() {
+
+}
+
+void Zoo::boom() {
+
+}
+
+void Zoo::babyBorn() {
+
+}
+
+void Zoo::doubleArray(AnimalType) {
+
+}
+
+void Zoo::removeElemnt(AnimalType) {
+
+}
+
+bool Zoo::hasAdult(AnimalType) {
+    return false;
+}
+
+
+void Zoo::randomEvent() {
+
+}
+
+float Zoo::profit() {
+    return 0;
+}
+
+void Zoo::addAnimal(AnimalType) {
+
+}
