@@ -12,7 +12,6 @@
 class DoubleLinkedList {
     std::shared_ptr<Node> head;
     std::shared_ptr<Node> tail;
-    int size;
 public:
     DoubleLinkedList(std::shared_ptr<Node> node);
 

@@ -64,11 +64,11 @@ void DoubleLinkedList::deleteTail() {
 }
 
 void DoubleLinkedList::listForward() {
-    if(head == nullptr && tail == nullptr){
+    std::shared_ptr<Node> temp = head;
+    if(tail == nullptr){
         std::cout << "double linked list is empty " << std::endl;
         return;
     }
-    std::shared_ptr<Node> temp = head;
     while(temp != nullptr){
         std::cout << temp->val << " ";
         temp = temp->next;
@@ -78,11 +78,11 @@ void DoubleLinkedList::listForward() {
 }
 
 void DoubleLinkedList::listBackward() {
-    if(head == nullptr && tail == nullptr){
+    std::shared_ptr<Node> temp = tail;
+    if(tail == nullptr){
         std::cout << "double linked list is empty " << std::endl;
         return;
     }
-    std::shared_ptr<Node> temp = tail;
     while(temp != nullptr){
         std::cout << temp->val << " ";
         temp = temp->prev;

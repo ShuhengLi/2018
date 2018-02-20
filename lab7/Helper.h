@@ -1,15 +1,13 @@
 //
-// Created by Shuheng Li on 2/12/18.
+// Created by Shuheng Li on 2/20/18.
 //
 
-#ifndef LAB6_HELPER_H
-#define LAB6_HELPER_H
+#ifndef LAB7_HELPER_H
+#define LAB7_HELPER_H
 
 
 #include <iostream>
 
-int random(int range);
-int randomOneBase(int range);
 int checkInputInt();
 
 template <class T>
@@ -40,4 +38,5 @@ T checkInput(T low, T high){
     return res;
 }
 
-#endif //LAB6_HELPER_H
+
+#endif //LAB7_HELPER_H
