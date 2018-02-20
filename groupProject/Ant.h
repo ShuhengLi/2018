@@ -1,7 +1,3 @@
-//
-// Created by Shuheng Li on 2/5/18.
-//
-
 #ifndef GROUPPROJECT_ANT_H
 #define GROUPPROJECT_ANT_H
 

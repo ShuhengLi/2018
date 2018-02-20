@@ -1,7 +1,3 @@
-//
-// Created by Shuheng Li on 2/5/18.
-//
-
 #include <iostream>
 #include "Ant.h"
 #include "Helper.h"
@@ -31,7 +27,7 @@ Status Ant::move(std::shared_ptr<Grid> grid) {
     if (!moves.empty()){
         int move = random(moves.size());
         position = position + directions[moves[move]];
-        grid->addNew(position, shared_from_this());
+        grid->addNew(position, this);
         grid->killCritter(position - directions[moves[move]]);
         return MOVED;
     }
@@ -47,7 +43,7 @@ bool Ant::breed(std::shared_ptr<Grid> grid) {
     if (!moves.empty()){
         int move = random(moves.size());
         Position newP = directions[moves[move]] + position;
-        std::shared_ptr<Critter> res = std::make_shared<Ant>(newP);
+        Critter* res = new Ant(newP);
         res->setMoved(true);
         grid->addNew(newP, res);
         return true;

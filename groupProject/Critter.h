@@ -1,7 +1,3 @@
-//
-// Created by Shuheng Li on 2/5/18.
-//
-
 #ifndef GROUPPROJECT_CRITTER_H
 #define GROUPPROJECT_CRITTER_H
 
