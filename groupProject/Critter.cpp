@@ -1,7 +1,3 @@
-//
-// Created by Shuheng Li on 2/5/18.
-//
-
 #include "Critter.h"
 #include "Grid.h"
 

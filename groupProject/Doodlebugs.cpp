@@ -1,7 +1,3 @@
-//
-// Created by Shuheng Li on 2/5/18.
-//
-
 #include <memory>
 #include <iostream>
 #include "Doodlebugs.h"
@@ -40,7 +36,7 @@ Status Doodlebugs::move(std::shared_ptr<Grid> grid) {
         starveStep = 0;
         position = position + directions[antMoves[0]];
         grid->killCritter(position);
-        grid->addNew(position, shared_from_this());
+        grid->addNew(position, this);
         grid->killCritter(position - directions[antMoves[0]]);
         return KILLING;
     }
@@ -54,7 +50,7 @@ Status Doodlebugs::move(std::shared_ptr<Grid> grid) {
         }
         int move = random(moves.size());
         position = position + directions[moves[move]];
-        grid->addNew(position, shared_from_this());
+        grid->addNew(position, this);
         grid->killCritter(position - directions[moves[move]] );
         return MOVED;
     }
@@ -71,7 +67,7 @@ bool Doodlebugs::breed(std::shared_ptr<Grid> grid) {
     if (!moves.empty()){
         int move = random(moves.size());
         Position newP = directions[moves[move]] + position;
-        std::shared_ptr<Critter> res = std::make_shared<Doodlebugs>(newP);
+        Critter* res = new Doodlebugs(newP);
         res->setMoved(true);
         grid->addNew(newP, res);
         return true;

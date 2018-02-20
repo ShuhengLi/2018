@@ -1,7 +1,3 @@
-//
-// Created by Shuheng Li on 2/5/18.
-//
-
 #include <iostream>
 #include "Grid.h"
 #include "Ant.h"
@@ -27,30 +23,30 @@ Grid::Grid(int r, int c, int antN, int doodlebugsN): row(r), column(c), antNum(a
 }
 
 void Grid::initCritter() {
+    grid = new Critter**[row];
     for(int i = 0; i < row; i++){
-        std::vector<std::shared_ptr<Critter>> currentRow;
+        grid[i] = new Critter*[column];
         for(int j = 0; j < column; j++){
-            std::shared_ptr<Critter> current = std::make_shared<Critter>(i, j);
-            currentRow.push_back(current);
+            grid[i][j] = new Critter(i, j);
         }
-        grid.push_back(currentRow);
-        currentRow.clear();
     }
 }
 
 void Grid::initAnt() {
     for(int i = 0; i < antNum; i++){
         Position p = emptyRandomPosition();
-        std::shared_ptr<Critter> current = std::make_shared<Ant>(p);
-        grid[p.x][p.y] = current;
+        auto temp = grid[p.x][p.y];
+        grid[p.x][p.y] = new Ant(p);
+        delete temp;
     }
 }
 
 void Grid::initDoodlebugs() {
     for(int i = 0; i < doodlebugsNum; i++){
         Position p = emptyRandomPosition();
-        std::shared_ptr<Critter> current = std::make_shared<Doodlebugs>(p);
-        grid[p.x][p.y] = current;
+        auto temp = grid[p.x][p.y];
+        grid[p.x][p.y] = new Doodlebugs(p);
+        delete temp;
     }
 
 }
@@ -77,8 +73,10 @@ void Grid::displayGrid() {
                 std::cout << " ";
             } else if(grid[i][j]->getType() == ANT){
                 std::cout << "O";
-            } else{
+            } else if(grid[i][j]->getType() == DOOLEBUGS){
                 std::cout << "X";
+            } else{
+                std::cout << "m";
             }
         }
         std::cout << "|" << std::endl;
@@ -88,8 +86,10 @@ void Grid::displayGrid() {
 
 }
 
-void Grid::addNew(Position p, std::shared_ptr<Critter> ptr) {
+void Grid::addNew(Position p, Critter* ptr) {
+    auto temp = grid[p.x][p.y];
     grid[p.x][p.y] = ptr;
+    delete temp;
 }
 
 
@@ -145,11 +145,11 @@ bool Grid::checkAnt(Position p) {
 }
 
 void Grid::killCritter(int x, int y) {
-    grid[x][y] = std::make_shared<Critter>(x, y);
+    grid[x][y] = new Critter(x, y);
 }
 
 void Grid::killCritter(Position p) {
-    grid[p.x][p.y] = std::make_shared<Critter>(p);
+    grid[p.x][p.y] = new Critter(p);
 }
 
 void Grid::move() {
@@ -259,6 +259,14 @@ void Grid::showReports() {
     std::cout << reportAnt[STAY] << " Ant stay" << std::endl;
     std::cout << reportAnt[MOVED] << " Ant moved" << std::endl;
     std::cout << reportAnt[BREED]<< " Ant borned" << std::endl;
+
+}
+
+Grid::~Grid() {
+    for(int i = 0; i < row; i++){
+        delete[] grid[i];
+    }
+    delete[] grid;
 
 }
 

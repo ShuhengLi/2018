@@ -1,7 +1,3 @@
-//
-// Created by Shuheng Li on 2/5/18.
-//
-
 #ifndef GROUPPROJECT_GRID_H
 #define GROUPPROJECT_GRID_H
 
@@ -15,7 +11,7 @@ private:
     int antNum;
     int doodlebugsNum;
 
-    std::vector<std::vector<std::shared_ptr<Critter>>> grid;
+    Critter*** grid;
     std::map<Status, int> reportAnt;
     std::map<Status, int> reportDoodlebugs;
 
@@ -33,6 +29,9 @@ public:
     bool checkAnt(int x, int y);
     bool checkAnt(Position p);
     void killCritter(int x, int y);
+
+    virtual ~Grid();
+
     void killCritter(Position p);
     void move();
     void antMove();
@@ -43,7 +42,7 @@ public:
     void resetMovedFlag();
     void resetReports();
     void showReports();
-    void addNew(Position, std::shared_ptr<Critter>);
+    void addNew(Position, Critter*);
     void displayGrid();
     void displayAnt();
 };

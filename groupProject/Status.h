@@ -1,7 +1,3 @@
-//
-// Created by Shuheng Li on 2/6/18.
-//
-
 #ifndef GROUPPROJECT_STATUS_H
 #define GROUPPROJECT_STATUS_H
 enum Status{
