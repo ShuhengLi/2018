@@ -40,5 +40,4 @@ T checkInput(T low, T high){
     return res;
 }
 
-
 #endif //LAB6_HELPER_H
