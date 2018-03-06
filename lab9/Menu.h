@@ -6,8 +6,11 @@
 #define LAB9_MENU_H
 
 #include <queue>
+#include <stack>
+#include <string>
 
 class Menu {
+//-------------------------------Queue-------------------------------
 private:
     std::queue<int> queue;
     int rounds;
@@ -24,6 +27,14 @@ public:
     Menu();
     void initQueue();
     void simulated();
+
+//-------------------------------Stack-------------------------------
+private:
+    std::stack<char> stack;
+    std::string firstPart;
+public:
+    void initStack();
+    std::string convert2Palindrome();
 };
 
 

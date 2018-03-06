@@ -5,6 +5,22 @@
 #include "Menu.h"
 #include "Helper.h"
 
+Menu::Menu() {
+    lastAveLength = 0;
+    currentRound = 0;
+    std::cout << "1. Test Buffer    2. Create A Palindrome " << std::endl;
+    int input = checkInput(1, 2);
+    if(input == 1){
+        initQueue();
+        simulated();
+    } else{
+        initStack();
+        std::string res = convert2Palindrome();
+        std::cout << res << std::endl;
+    }
+
+}
+
 void Menu::initQueue() {
     int lowBound = 1;
     int highBound = 1000;
@@ -73,8 +89,21 @@ void Menu::calculateAveLength() {
     return ;
 }
 
-Menu::Menu() {
-    lastAveLength = 0;
-    currentRound = 0;
+
+void Menu::initStack() {
+    std::cout << "Please input a string: " << std::endl;
+    std::getline(std::cin, firstPart);
+    for(char c : firstPart){
+        stack.push(c);
+    }
+}
+
+std::string Menu::convert2Palindrome() {
+    std::string res = firstPart;
+    while(!stack.empty()){
+        res.push_back(stack.top());
+        stack.pop();
+    }
+    return res;
 }
 
