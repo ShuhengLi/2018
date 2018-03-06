@@ -77,7 +77,7 @@ void Menu::displayQueue() {
     std::queue<int> temp(queue);
     std::cout << "The queue values are :" << std::endl;
     while (!temp.empty()){
-        std::cout << temp.front() << " " << std::endl;
+        std::cout << temp.front() << " ";
         temp.pop();
     }
     std::cout << std::endl << "The Queue length is :" << queue.size() << std::endl;
