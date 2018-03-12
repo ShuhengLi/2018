@@ -1,9 +1,9 @@
 
 
 output: main.o Door.o Game.o Geek.o Helper.o Steve.o Space.o Raymond.o OriginalSeat.o Omniscience.o MusicTeacher.o Meng.o Jerry.o
-    g++ main.o Door.o Game.o Geek.o Helper.o Steve.o Space.o Raymond.o OriginalSeat.o Omniscience.o MusicTeacher.o Meng.o Jerry.o -o output
+	g++ main.o Door.o Game.o Geek.o Helper.o Steve.o Space.o Raymond.o OriginalSeat.o Omniscience.o MusicTeacher.o Meng.o Jerry.o -o output
 
-main.o: main.cpp Items.h 
+main.o: main.cpp Items.h Direction.h
 	g++ -c -std=c++11 main.cpp
 
 Door.o: Door.cpp Door.h

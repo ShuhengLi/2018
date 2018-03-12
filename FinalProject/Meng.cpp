@@ -1,5 +1,6 @@
 #include "Meng.h"
 #include <iostream>
+#include <algorithm>
 #include <iomanip>
 
 void Meng::event() {

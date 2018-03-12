@@ -1,5 +1,6 @@
 #include "Raymond.h"
 #include <iomanip>
+#include <algorithm>
 #include <iostream>
 Raymond::Raymond() {
     spaceName = "Roymond Liu";

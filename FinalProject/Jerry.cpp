@@ -1,5 +1,6 @@
 #include "Jerry.h"
 #include <iomanip>
+#include <algorithm>
 #include <iostream>
 
 Jerry::Jerry() {
