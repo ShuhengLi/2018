@@ -90,6 +90,7 @@ void Game::action() {
     if(player->getCurrentSpace()->getSpaceName() == "Door"){
         std::cout << "You WIN!!!" << std::endl;
     } else{
+        std::cout << "You uesd up all of your time!" << std::endl;
         std::cout << "You LOSE!!!" << std::endl;
     }
 

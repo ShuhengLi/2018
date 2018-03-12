@@ -8,6 +8,7 @@ void MusicTeacher::event() {
         return;
     }
     if(geek->hasItem(GUITAR)){
+        std::cout << "\"I'm a guitar musician.\"" << std::endl;
         std::cout << "\"You have a beautiful guitar! Do you want to sell it to me?\"" << std::endl;
         std::cout << "1.Yes  2.No" << std::endl;
         int choose = checkInput(1, 2);
