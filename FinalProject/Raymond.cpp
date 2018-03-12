@@ -2,13 +2,13 @@
 #include <iomanip>
 #include <algorithm>
 #include <iostream>
-Raymond::Raymond() {
+Raymond::Raymond() : Space(){
     spaceName = "Roymond Liu";
-    flag = false;
+    flags[DOWN] = false;
 }
 
 void Raymond::event() {
-    if(flag){
+    if(flags[DOWN]){
         std::cout << "\"You did great job, you got my pass\"" << std::endl;
     }
     std::cout << "\"My name is Roymond! I'm the TA for CS-162!\"" << std::endl;
@@ -32,33 +32,6 @@ void Raymond::event() {
     //cites wiki
     std::cout << "You said: \"Algorithm is a process or set of rules to be followed in calculations or other problem-solving operations, especially by a computer. \"" << std::endl;
     std::cout << "\"Bravo! \"" << std::endl;
-    flag = true;
+    flags[DOWN] = true;
 }
 
-void Raymond::showInfo() {
-    std::cout << "Current location in " << spaceName << std::endl;
-    if(up){
-        std::cout << std::right << std::setw(40) << up->getSpaceName() << std::endl << std::endl;
-        potentialMoves.push_back(UP);
-    }
-    int shift = 40;
-    if(left){
-        shift = 40 - left->getSpaceName().size();
-        std::cout << left->getSpaceName();
-        potentialMoves.push_back(LEFT);
-    }
-    std::cout << std::right << std::setw(shift) << spaceName;
-    if(right){
-        std::cout << right->getSpaceName();
-        potentialMoves.push_back(RIGHT);
-    }
-
-    std::cout << std::endl << std::endl;
-    if(down && flag){
-        std::cout << std::right << std::setw(40) << down->getSpaceName() << std::endl << std::endl;
-        potentialMoves.push_back(DOWN);
-    }
-
-    std::sort( potentialMoves.begin(), potentialMoves.end() );
-    potentialMoves.erase( unique( potentialMoves.begin(), potentialMoves.end() ), potentialMoves.end() );
-}

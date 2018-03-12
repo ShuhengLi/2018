@@ -23,6 +23,6 @@ void MusicTeacher::event() {
     }
 }
 
-MusicTeacher::MusicTeacher() {
+MusicTeacher::MusicTeacher() : Space(){
     spaceName = "MusicTeacher";
 }

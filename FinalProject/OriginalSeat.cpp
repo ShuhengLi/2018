@@ -4,6 +4,6 @@ void OriginalSeat::event() {
     std::cout << "This is my original seat, nothing special" << std::endl;
 }
 
-OriginalSeat::OriginalSeat() {
+OriginalSeat::OriginalSeat() : Space() {
     spaceName = "OrignalSeat";
 }

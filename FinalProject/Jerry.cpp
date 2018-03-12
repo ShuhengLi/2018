@@ -3,9 +3,9 @@
 #include <algorithm>
 #include <iostream>
 
-Jerry::Jerry() {
+Jerry::Jerry() : Space(){
     spaceName = "Jerry Peng";
-    flag = false;
+    flags[DOWN] = false;
 }
 
 void Jerry::event() {
@@ -17,32 +17,6 @@ void Jerry::event() {
     }
     std::cout << "You said: \"COPY&PASTE\"" << std::endl;
     std::cout << "\"You are a MASTER now, nothing I could teach you anymore!\"" << std::endl;
-    flag = true;
+    flags[DOWN] = true;
 }
 
-void Jerry::showInfo() {
-    std::cout << "Current location in " << spaceName << std::endl;
-    if(up){
-        std::cout << std::right << std::setw(40) << up->getSpaceName() << std::endl << std::endl;
-        potentialMoves.push_back(UP);
-    }
-    int shift = 40;
-    if(left){
-        shift = 40 - left->getSpaceName().size();
-        std::cout << left->getSpaceName();
-        potentialMoves.push_back(LEFT);
-    }
-    std::cout << std::right << std::setw(shift) << spaceName;
-    if(right){
-        std::cout << std::right << std::setw(40) << right->getSpaceName();
-        potentialMoves.push_back(RIGHT);
-    }
-
-    std::cout << std::endl << std::endl;
-    if(down && flag){
-        std::cout << std::right << std::setw(40) << down->getSpaceName() << std::endl << std::endl;
-        potentialMoves.push_back(DOWN);
-    }
-    std::sort( potentialMoves.begin(), potentialMoves.end() );
-    potentialMoves.erase( unique( potentialMoves.begin(), potentialMoves.end() ), potentialMoves.end() );
-}

@@ -2,7 +2,7 @@
 #include <iostream>
 #include "Helper.h"
 
-Steve::Steve() {
+Steve::Steve() : Space() {
     spaceName = "Steve Jobs";
 }
 

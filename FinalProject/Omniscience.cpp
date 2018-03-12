@@ -28,6 +28,6 @@ void Omniscience::event() {
     }
 }
 
-Omniscience::Omniscience() {
+Omniscience::Omniscience() : Space() {
     spaceName = "Omniscience";
 }

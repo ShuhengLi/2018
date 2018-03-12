@@ -2,6 +2,7 @@
 #define FINALPROJECT_SPACE_H
 
 #include <memory>
+#include <map>
 #include <string>
 #include <vector>
 #include "Geek.h"
@@ -13,12 +14,13 @@ protected:
     std::string spaceName;
     std::shared_ptr<Geek> geek;
     std::vector<Direction> potentialMoves;
+    std::map<Direction, bool> flags;
 public:
     Space();
 
     const std::string &getSpaceName() const;
     void moveToHere(std::shared_ptr<Geek> geek);
-    virtual void showInfo();
+    void showInfo();
     const std::vector<Direction> &getPotentialMoves() const;
     virtual void event() = 0;
 
