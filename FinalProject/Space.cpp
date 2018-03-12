@@ -2,25 +2,31 @@
 #include "Helper.h"
 #include <iostream>
 #include <algorithm>
+#include <iomanip>
 Space::Space() {}
 
 void Space::showInfo() {
-    std::cout << "Current in "<< spaceName << std::endl;
+    std::cout << "Current location in " << spaceName << std::endl;
     if(up){
-        std::cout << "Up is "<< up->getSpaceName() << std::endl;
+        std::cout << std::right << std::setw(40) << up->getSpaceName() << std::endl << std::endl;
         potentialMoves.push_back(UP);
     }
+    int shift = 40;
     if(left){
-        std::cout << "Left is "<< left->getSpaceName() << std::endl;
+        shift = 40 - left->getSpaceName().size();
+        std::cout << left->getSpaceName();
         potentialMoves.push_back(LEFT);
     }
-    if(down){
-        std::cout << "Down is "<< down->getSpaceName() << std::endl;
-        potentialMoves.push_back(DOWN);
-    }
+    std::cout << std::right << std::setw(shift) << spaceName;
     if(right){
-        std::cout << "Right is "<< right->getSpaceName() << std::endl;
+        std::cout << std::right << std::setw(40) << right->getSpaceName();
         potentialMoves.push_back(RIGHT);
+    }
+
+    std::cout << std::endl << std::endl;
+    if(down){
+        std::cout << std::right << std::setw(40) << down->getSpaceName() << std::endl << std::endl;
+        potentialMoves.push_back(DOWN);
     }
 
     std::sort( potentialMoves.begin(), potentialMoves.end() );
