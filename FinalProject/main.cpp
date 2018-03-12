@@ -1,6 +1,9 @@
 #include <iostream>
+#include <memory>
+#include "Game.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    std::shared_ptr<Game> game = std::make_shared<Game>();
+    game->action();
     return 0;
 }

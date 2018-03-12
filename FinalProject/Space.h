@@ -1,28 +1,31 @@
-//
-// Created by Shuheng Li on 3/5/18.
-//
-
 #ifndef FINALPROJECT_SPACE_H
 #define FINALPROJECT_SPACE_H
 
 #include <memory>
 #include <string>
-
+#include <vector>
+#include "Geek.h"
+#include "Items.h"
+#include "Direction.h"
 
 class Space {
+protected:
+    std::string spaceName;
+    std::shared_ptr<Geek> geek;
+    std::vector<Direction> potentialMoves;
 public:
     Space();
-    void showInfo();
-    void hint();
+
+    const std::string &getSpaceName() const;
+    void moveToHere(std::shared_ptr<Geek> geek);
+    virtual void showInfo();
+    const std::vector<Direction> &getPotentialMoves() const;
     virtual void event() = 0;
 
-private:
     std::shared_ptr<Space> up;
     std::shared_ptr<Space> down;
     std::shared_ptr<Space> left;
     std::shared_ptr<Space> right;
-    int spaceId;
-    std::string spaceName;
 };
 
 

@@ -1,10 +1,25 @@
-#include "Space.h"
-#include "Helper.h"
-#include <iostream>
-#include <algorithm>
-Space::Space() {}
 
-void Space::showInfo() {
+#include "Jerry.h"
+#include <iostream>
+
+Jerry::Jerry() {
+    spaceName = "Jerry Peng";
+    flag = false;
+}
+
+void Jerry::event() {
+    std::cout << "I am Professor Jerry! Answer my question then you could leave this class!" << std::endl;
+    std::cout << "What's the secert of programming?" << std::endl;
+    if(!geek->hasItem(CTRL_V)){
+        std::cout << "\"You don't know the answer? Go back to your seat!\" " << std::endl;
+        return;
+    }
+    std::cout << "You said: \"COPY&PASTE\"" << std::endl;
+    std::cout << "\"You are a MASTER now, nothing I could teach you anymore!\"" << std::endl;
+    flag = true;
+}
+
+void Jerry::showInfo() {
     std::cout << "Current in "<< spaceName << std::endl;
     if(up){
         std::cout << "Up is "<< up->getSpaceName() << std::endl;
@@ -14,7 +29,7 @@ void Space::showInfo() {
         std::cout << "Left is "<< left->getSpaceName() << std::endl;
         potentialMoves.push_back(LEFT);
     }
-    if(down){
+    if(down && flag){
         std::cout << "Down is "<< down->getSpaceName() << std::endl;
         potentialMoves.push_back(DOWN);
     }
@@ -25,17 +40,4 @@ void Space::showInfo() {
 
     std::sort( potentialMoves.begin(), potentialMoves.end() );
     potentialMoves.erase( unique( potentialMoves.begin(), potentialMoves.end() ), potentialMoves.end() );
-}
-
-const std::string &Space::getSpaceName() const {
-    return spaceName;
-}
-
-void Space::moveToHere(std::shared_ptr<Geek> geek) {
-    this->geek = geek;
-
-}
-
-const std::vector<Direction> &Space::getPotentialMoves() const {
-    return potentialMoves;
 }
