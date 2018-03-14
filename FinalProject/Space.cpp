@@ -45,7 +45,6 @@ const std::string &Space::getSpaceName() const {
 
 void Space::moveToHere(std::shared_ptr<Geek> geek) {
     this->geek = geek;
-
 }
 
 const std::vector<Direction> &Space::getPotentialMoves() const {
