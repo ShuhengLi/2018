@@ -5,21 +5,22 @@ long long fibonacciRecursive(int n);
 long long  fibonacciIterative(int n);
 int main() {
     int n = 100;
+    std::cout << "Measure as NANOSECONDS" << std::endl << std::endl;
     for(int i = 0; i < n; i += 1){
         //Iterative method
-        clock_t beginI = clock();
+        auto beginI = std::chrono::steady_clock::now();
         auto I = fibonacciIterative(i);
-        clock_t endI = clock();
+        auto endI = std::chrono::steady_clock::now();
 
         //Recursive method
-        clock_t beginR = clock();
+        auto beginR = std::chrono::steady_clock::now();
         auto R = fibonacciRecursive(i);
-        clock_t endR = clock();
+        auto endR = std::chrono::steady_clock::now();
 
         //measure and printout as a table
-        float durationI = float(endI - beginI) / CLOCKS_PER_SEC;
-        float durationR = float(endR - beginR) / CLOCKS_PER_SEC;
-        std::cout <<"N: "<< i << std::fixed << std::setprecision(6) << std::right<< std::setw(40)
+        auto durationI = std::chrono::duration_cast<std::chrono::nanoseconds>(endI - beginI).count();
+        auto durationR = std::chrono::duration_cast<std::chrono::nanoseconds>(endR - beginR).count();
+        std::cout <<"N: "<< i << std::right<< std::setw(40)
                   << "IterateTime: "<< durationI << std::right << std::setw(40)
                   << "RecursiveTime: " << durationR << std::endl;
         //std::cout << "IterateNum: "<< I << "\nRecursiveNum: " << R<< std::endl;
