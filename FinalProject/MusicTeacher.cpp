@@ -19,7 +19,7 @@ void MusicTeacher::event() {
             std::cout << "\"I'm here waiting for you until you change your mind.\"" << std::endl;
         }
     } else{
-        std::cout << "\"I love your guitar\"." << std::endl;
+        std::cout << "\"I love your guitar.\"." << std::endl;
     }
 }
 

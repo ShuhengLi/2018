@@ -12,7 +12,7 @@ void Meng::event() {
         flags[DOWN] = true;
     } else{
         std::cout << "You try to talk to this gorgeous Chinese girl" << std::endl;
-        std::cout << "\"Please don't disturb me while I'm studing CS-162.\" Meng said." << std::endl;
+        std::cout << "\"Please don't disturb me while I'm studying CS-162.\" Meng said." << std::endl;
     }
 }
 

@@ -9,6 +9,7 @@ Steve::Steve() : Space() {
 void Steve::event() {
     if(geek->hasItem(MACBOOK)){
         std::cout << "\"Enjoying your Macbook!\"" << std::endl;
+        return;
     }
     std::cout << "\"My name is Steve, have you heard about macbook?\"" << std::endl;
     if(geek->hasItem(MONEY)){

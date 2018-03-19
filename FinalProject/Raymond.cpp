@@ -10,6 +10,7 @@ Raymond::Raymond() : Space(){
 void Raymond::event() {
     if(flags[DOWN]){
         std::cout << "\"You did great job, you got my pass\"" << std::endl;
+        return;
     }
     std::cout << "\"My name is Roymond! I'm the TA for CS-162!\"" << std::endl;
     if(!geek->hasItem(MACBOOK)){
