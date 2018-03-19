@@ -1,10 +1,14 @@
 #include <iostream>
 #include <iomanip>
 #include <time.h>
+#include <map>
 long long fibonacciRecursive(int n);
 long long  fibonacciIterative(int n);
+std::map<int, long long> m;
 int main() {
     int n = 100;
+    m[0] = 0;
+    m[1] = 1;
     std::cout << "Measure as NANOSECONDS" << std::endl << std::endl;
     for(int i = 0; i < n; i += 1){
         //Iterative method
@@ -30,6 +34,13 @@ int main() {
 
 //cite from https://www.codeproject.com/tips/109443/fibonacci-recursive-and-non-recursive-c
 long long fibonacciRecursive(int n){
+    if(m.find(n) != m.end()){
+        return m[n];
+    }else{
+        auto res = fibonacciRecursive(n-1) + fibonacciRecursive(n-2);
+        m[n] = res;
+        return res;
+    }
     if(!n){
         return 0;
     }else if(n == 1){
